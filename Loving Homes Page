@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Paw Suites</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error { color: red; font-size: 0.9em; margin-top: 5px; }
+        .success { color: green; font-size: 1em; padding: 10px; background: #d4edda; border: 1px solid #c3e6cb; }
+        .form-group { margin-bottom: 1rem; }
+        input:invalid, textarea:invalid { border-color: #ff4444; }
+        input:valid, textarea:valid { border-color: #00C851; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Loving Homes</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Get In Touch</h1>
+        <p>Have a question or want to book a stay for your dog? Fill out the form below.</p>
+
+        <div id="formMessages"></div>
+
+        <form id="contactForm" action="process-booking.php" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name:*</label>
+                <input type="text" id="name" name="name" required minlength="2">
+                <div class="error" id="nameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email:*</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9+\-\s()]{10,}">
+                <div class="error" id="phoneError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="dogName">Your Dog's Name:*</label>
+                <input type="text" id="dogName" name="dogName" required>
+                <div class="error" id="dogNameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="package">Preferred Package:</label>
+                <select id="package" name="package">
+                    <option value="">Select a package</option>
+                    <option value="premium">Premium Package</option>
+                    <option value="classic">Classic Package</option>
+                    <option value="day">Day Package</option>
+                    <option value="custom">Custom Package</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="checkin">Preferred Check-in Date:</label>
+                <input type="date" id="checkin" name="checkin" min="<?php echo date('Y-m-d'); ?>">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message:*</label>
+                <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+                <div class="error" id="messageError"></div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="newsletter" name="newsletter" checked>
+                    Send me updates and special offers
+                </label>
+            </div>
+
+            <!--<button type="submit" id="submitBtn">Send Booking Inquiry</button>-->
+             </script> 
+    <form id="bookingForm">
+    <!-- Your form fields here -->
+    <button type="button" onclick="sendBookingEmail()">
+        Send Booking Inquiry
+    </button>
+</form>
+
+<script>
+function sendBookingEmail() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    // ... collect all form data
+    
+    const subject = `Booking Inquiry for ${dogName}`;
+    const body = `Name: ${name}\nEmail: ${email}\n...`;
+    
+    window.location.href = `mailto:info@lovinghomes.mv?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+</script>
+</body>
+</html>
+        </form>
+
+        <section>
+            <h2>Other Ways to Reach Us</h2>
+            <p><strong>Phone:</strong> +960 123-4567</p>
+            <p><strong>Email:</strong> info@lovinghomes.mv</p>
+            <p><strong>Address:</strong> Furry Friend's Lane, Malé, Maldives</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Loving Homes. All rights reserved.</p>
+    </footer>
+
+    <script>
+      
